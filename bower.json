@@ -1,0 +1,13 @@
+{
+  "name": "Tasksk",
+  "version": "1.0.0",
+  "authors": [
+    "Tatsuya Kawasaki"
+  ],
+  "main": "main.js",
+  "license": "MIT",
+  "dependencies": {
+    "github-markdown-css": "~2.0.10",
+    "Materialize": "materialize#~0.97.2"
+  }
+}

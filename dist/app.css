@@ -1,0 +1,11 @@
+* {
+	font-family: 'Noto Sans Japanese', 'Roboto', serif;
+}
+
+.checked {
+	text-decoration: line-through;
+}
+
+.unchecked {
+	
+}

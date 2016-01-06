@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Tasksk - TASK MANEGEMENT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta charset="utf-8">
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/notosansjapanese.css" rel="stylesheet">
+    <link rel="stylesheet" href="lib.css">
+    <link rel="stylesheet" href="app.css">
+  </head>
+  <body>
+  	<div id="container"></div>
+    <script>
+      // Hook Electron - browserfy - babel - ...   Bad knowhow 
+      window.require = require;
+      window.jQuery = window.$ = require('jquery');
+      window._ = require('underscore');
+      window.Hammer = require('hammerjs');
+      window.React = require('react');
+    </script>
+  	<script src="lib.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
