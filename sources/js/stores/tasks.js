@@ -1,5 +1,6 @@
 import Alt from '../alt'
 import BoardActions from '../actions/board'
+import moment from 'moment'
 
 class TasksStore {
 
@@ -37,6 +38,8 @@ class TasksStore {
     data = _.extend({id: id, type: "ToDo", createdAt: new Date(), updatedAt: new Date(), movedAt: null, closedAt: null, visible: true}, data)
     var todos = this.state.todoTasks;
     todos = _.union(todos, [data])
+
+    todos = _.sortBy(todos, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
     this.setState({ loading: false, errors: [], todoTasks: todos })
     localStorage.state = JSON.stringify(this.state)
 
@@ -52,6 +55,8 @@ class TasksStore {
     data = _.extend({id: id, type: "Doing", createdAt: new Date(), updatedAt: new Date(), movedAt: null, closedAt: null, visible: true}, data)
     var doings   = this.state.doingTasks;
     doings = _.union(doings, [data])
+
+    doings = _.sortBy(doings, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
     this.setState({ loading: false, errors: [], doingTasks: doings })
     localStorage.state = JSON.stringify(this.state)
 
@@ -67,6 +72,8 @@ class TasksStore {
     data = _.extend({id: id, type: "Done", createdAt: new Date(), updatedAt: new Date(), movedAt: null, closedAt: null, visible: true}, data)
     var dones    = this.state.doneTasks;
     dones = _.union(dones, [data])
+
+    dones = _.sortBy(dones, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
     this.setState({ loading: false, errors: [], doneTasks: dones })
     localStorage.state = JSON.stringify(this.state)
 
@@ -82,6 +89,8 @@ class TasksStore {
     data = _.extend({id: id, type: "Archive", createdAt: new Date(), updatedAt: new Date(), movedAt: null, closedAt: null, visible: true}, data)
     var archives = this.state.archiveTasks;
     archives = _.union(archives, [data])
+
+    archives = _.sortBy(archives, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
     this.setState({ loading: false, errors: [], archiveTasks: archives })
     localStorage.state = JSON.stringify(this.state)
 
@@ -127,6 +136,10 @@ class TasksStore {
       archives = _.reject(archives, function(task){ return task.id == id; });
     }
 
+    todos    = _.sortBy(todos, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
+    doings   = _.sortBy(doings, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
+    dones    = _.sortBy(dones, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
+    archives = _.sortBy(archives, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
     this.setState({ loading: false, errors: [], 
                     todoTasks: todos, doingTasks: doings, doneTasks: dones, archiveTasks: archives })
     localStorage.state = JSON.stringify(this.state)
@@ -171,6 +184,10 @@ class TasksStore {
       archives = _.reject(archives, function(task){ return task.id == id; });
     }
 
+    todos    = _.sortBy(todos, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
+    doings   = _.sortBy(doings, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
+    dones    = _.sortBy(dones, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
+    archives = _.sortBy(archives, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
     this.setState({ loading: false, errors: [], 
                     todoTasks: todos, doingTasks: doings, doneTasks: dones, archiveTasks: archives })
     localStorage.state = JSON.stringify(this.state)
@@ -215,6 +232,10 @@ class TasksStore {
       archives = _.reject(archives, function(task){ return task.id == id; });
     }
 
+    todos    = _.sortBy(todos, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
+    doings   = _.sortBy(doings, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
+    dones    = _.sortBy(dones, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
+    archives = _.sortBy(archives, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
     this.setState({ loading: false, errors: [], 
                     todoTasks: todos, doingTasks: doings, doneTasks: dones, archiveTasks: archives })
     localStorage.state = JSON.stringify(this.state)
@@ -259,6 +280,10 @@ class TasksStore {
       dones    = _.reject(dones, function(task){ return task.id == id; });
     }
 
+    todos    = _.sortBy(todos, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
+    doings   = _.sortBy(doings, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
+    dones    = _.sortBy(dones, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
+    archives = _.sortBy(archives, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
     this.setState({ loading: false, errors: [], 
                     todoTasks: todos, doingTasks: doings, doneTasks: dones, archiveTasks: archives })
     localStorage.state = JSON.stringify(this.state)
@@ -322,6 +347,10 @@ class TasksStore {
       }
     });
 
+    todos    = _.sortBy(todos, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
+    doings   = _.sortBy(doings, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
+    dones    = _.sortBy(dones, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
+    archives = _.sortBy(archives, function(todo){ return moment(todo.limit).subtract(todo.days, 'days').format('X') })
     this.setState({ loading: false, errors: [], 
                     todoTasks: todos, doingTasks: doings, doneTasks: dones, archiveTasks: archives })
     localStorage.state = JSON.stringify(this.state)
