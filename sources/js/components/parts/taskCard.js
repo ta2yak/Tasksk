@@ -44,9 +44,13 @@ class TaskCard extends React.Component {
     let cardColor = 'white'
 
     if (task.type == "ToDo" || task.type == "Doing") {
+
       cardColor     = this.isLimitOver() ?  'pink accent-2' : cardColor
       cardColor     = this.isLimitToday() ? 'pink lighten-3' : cardColor
       cardColor     = this.isNearLimit() ?  'pink lighten-5' : cardColor
+    } else {
+
+      cardColor     = 'grey lighten-3'
     }
 
     let cardClass = "card " + cardColor
