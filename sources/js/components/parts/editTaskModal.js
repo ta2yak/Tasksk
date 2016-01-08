@@ -28,6 +28,7 @@ class EditTaskModal extends React.Component {
     let body = React.findDOMNode(this.refs.body).value.trim()
     let limit = React.findDOMNode(this.refs.limit).value
     limit = limit ? moment(React.findDOMNode(this.refs.limit).value) : null
+    let days = React.findDOMNode(this.refs.days).value.trim()
     let tags = React.findDOMNode(this.refs.tags).value.trim()
 
     if (title.length == 0) return;
@@ -36,6 +37,7 @@ class EditTaskModal extends React.Component {
     task.title = title
     task.body = body
     task.limit = limit
+    task.days = days
     task.tags = tags
 
     BoardActions.updateTask(task)
@@ -87,6 +89,13 @@ class EditTaskModal extends React.Component {
                 <div className="input-field col s12">
                   <DatePicker className="white-text" ref="limit" defaultValue={task.limit}/>
                   <label className="active white-text">Limit</label>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="input-field col s12">
+                  <input type="text" className="white-text" ref="days" defaultValue={task.days}></input>
+                  <label className="active white-text">Days</label>
                 </div>
               </div>
 

@@ -279,6 +279,7 @@ class TasksStore {
         task.title     = data.title
         task.body      = data.body
         task.limit      = data.limit
+        task.days      = data.days
         task.tags      = data.tags
         task.updatedAt = new Date()
         task.visible = true
@@ -290,6 +291,7 @@ class TasksStore {
         task.title     = data.title
         task.body      = data.body
         task.limit      = data.limit
+        task.days      = data.days
         task.tags      = data.tags
         task.updatedAt = new Date()
         task.visible = true
@@ -301,6 +303,7 @@ class TasksStore {
         task.title     = data.title
         task.body      = data.body
         task.limit      = data.limit
+        task.days      = data.days
         task.tags      = data.tags
         task.updatedAt = new Date()
         task.visible = true
@@ -312,6 +315,7 @@ class TasksStore {
         task.title     = data.title
         task.body      = data.body
         task.limit      = data.limit
+        task.days      = data.days
         task.tags      = data.tags
         task.updatedAt = new Date()
         task.visible = true

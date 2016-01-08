@@ -27,28 +27,30 @@ class CreateTaskModal extends React.Component {
     let body = React.findDOMNode(this.refs.body).value.trim()
     let limit = React.findDOMNode(this.refs.limit).value
     limit = limit ? moment(React.findDOMNode(this.refs.limit).value) : null
+    let days = React.findDOMNode(this.refs.days).value.trim()
     let tags = React.findDOMNode(this.refs.tags).value.trim()
 
     if (title.length == 0) return;
 
     switch (this.props.type){
      case 'ToDo':
-        BoardActions.createToDo({title: title, body: body, limit: limit, tags: tags})
+        BoardActions.createToDo({title: title, body: body, limit: limit, days: days, tags: tags})
         break;
       case 'Doing':
-        BoardActions.createDoing({title: title, body: body, limit: limit, tags: tags})
+        BoardActions.createDoing({title: title, body: body, limit: limit, days: days, tags: tags})
         break;
       case 'Done':
-        BoardActions.createDone({title: title, body: body, limit: limit, tags: tags})
+        BoardActions.createDone({title: title, body: body, limit: limit, days: days, tags: tags})
         break;
       case 'Archive':
-        BoardActions.createArchive({title: title, body: body, limit: limit, tags: tags})
+        BoardActions.createArchive({title: title, body: body, limit: limit, days: days, tags: tags})
         break;
     }
 
     React.findDOMNode(this.refs.title).value = ""
     React.findDOMNode(this.refs.body).value = ""
     React.findDOMNode(this.refs.limit).value = ""
+    React.findDOMNode(this.refs.days).value = ""
     React.findDOMNode(this.refs.tags).value = ""
 
     this.setState({show: false})
@@ -91,6 +93,13 @@ class CreateTaskModal extends React.Component {
                 <div className="input-field col s12">
                   <DatePicker className="white-text" ref="limit"/>
                   <label className="white-text">Limit</label>
+                </div>
+              </div>
+
+              <div className="row">
+                <div className="input-field col s12">
+                  <input type="text" className="white-text" ref="days"></input>
+                  <label className="white-text">Days</label>
                 </div>
               </div>
 

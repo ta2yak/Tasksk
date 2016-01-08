@@ -10,11 +10,12 @@ class TaskCard extends React.Component {
   isNearLimit(){
     let task = this.props.task
     if (!task.limit) return
+    if (!task.days) task.days = 0
 
-    let tommorow = moment().add(1, 'days')
-    let limit = moment(task.limit)
+    let today = moment()
+    let task_limit = moment(task.limit).subtract(task.days, 'days') // 作業を開始している必要がある日
 
-    return (limit.isSame(tommorow, 'day')) // 期限が明日ならTrue
+    return (task_limit.isBefore(today, 'day')) // 工数を逆算した上でそろそろはじめなくてはいけない時期
   }
 
   isLimitToday(){
@@ -76,7 +77,11 @@ class TaskCard extends React.Component {
             {bodyElement}
           </small>
           <br/>
-          <small>{task.limit ? moment(task.limit).format('MM/DD まで') : "未設定"}</small>
+          <small>
+            予定工数　{task.days ? task.days + '日' : "未設定"} <br/>
+            期限 {task.limit ? moment(task.limit).format('MM/DD まで') : "未設定"}
+            {task.limit && task.days ? moment(task.limit).subtract(task.days, 'days').format('　(MM/DD には始めましょう)') : ""}
+          </small>
 
           <br/>
           <br/>
